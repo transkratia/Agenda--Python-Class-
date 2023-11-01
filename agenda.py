@@ -15,7 +15,7 @@ cadastros = []
 def Cadastrar():
     nome = input("Digite o nome completo: ")
     email = input("Digite o e-mail: ")
-    telefone = input("Digite o telefone: ")
+    telefone = int(input("Digite o telefone: "))
     idade = int(input("Digite a idade: "))
     endereço = input("Digite o endereço: ")
 
@@ -54,6 +54,62 @@ def buscarEmail():
             achou = True
     if not achou:
         print("Nenhum cadastro encontrado com este e-mail.")
+
+# Função para buscar cadastros por telefone.
+
+def buscarTelefone():
+    achou = False
+    acharTelefone = int(input("Digite o telefone para buscar: "))
+    for t in cadastros:
+        if t.nome == acharTelefone:
+            print("Telefone encontrado, exibindo outros dados: ")
+            print(f"Nome: {t.nome}.")
+            print(f"E-mail: {t.email}.")
+            print(f"Idade: {t.idade}.")
+            print(f"Endereço: {t.endereço}.")
+            achou = True
+    if not achou:
+        print("Nenhum cadastro encontrado com este telefone.")
+
+# Função para listar nomes em ordem alfabética.
+
+def listar_ordemNome():
+    listaNomeada = []
+    listaOrdenada = []
+    for n in cadastros:
+        listaNomeada.append(n.nome)
+        listaOrdenada = sorted(listaNomeada)
+    if len(listaOrdenada) != 0:
+        print(f"Os nomes, em ordem alfabética, são: {listaOrdenada}")
+    else:
+        print("Não há nomes para colocar em ordem alfabética.")
+
+# Função para listar e-mail em ordem alfabética.
+
+def listar_ordemEmail():
+    listaNomeada = []
+    listaOrdenada = []
+    for n in cadastros:
+        listaNomeada.append(n.email)
+        listaOrdenada = sorted(listaNomeada)
+    if len(listaOrdenada) != 0:
+        print(f"Os e-mail, em ordem alfabética, são: {listaOrdenada}")
+    else:
+        print("Não há e-mail para colocar em ordem alfabética.")
+
+# Função para listar maiores de idade.
+
+def listar_maiorIdade():
+    listaNomeada = []
+    listaOrdenada = []
+    for n in cadastros:
+        if n.idade >= 18:
+            listaNomeada.append(n.nome)
+        listaOrdenada = sorted(listaNomeada)
+    if len(listaOrdenada) != 0:
+        print(f"Os maiores de idade são: {listaOrdenada}")
+    else:
+        print("Não há maiores de idade.")
 
 # Crio o Menu. Perdão pela Lenny Face.
 
