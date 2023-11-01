@@ -6,6 +6,24 @@ class Agenda:
         self.idade = idade
         self.endereço = endereço
 
+    def capitalizar_nome(self, nome):
+        nome = nome.capitalize()
+        return nome
+
+    def pegar_numero(self, endereço):
+        númeroEndereço = int(filter(str.isdigit, endereço))
+        return númeroEndereço
+
+    def imprimir(self):
+        resp = "====================="
+        resp += f"Nome: {self.nome}"
+        resp += f"E-mail: {self.email}"
+        resp += f"Telefone: {self.telefone}"
+        resp += f"Idade: {self.idade}"
+        resp += f"Endereço: {self.endereço}"
+        resp += "====================="
+        return resp
+
 # Crio as listas para as funções funcionarem.
 
 cadastros = []
@@ -15,9 +33,12 @@ cadastros = []
 def Cadastrar():
     nome = input("Digite o nome completo: ")
     email = input("Digite o e-mail: ")
+    while "@" not in email:
+        email = input("Digite um e-mail COM @: ")
     telefone = int(input("Digite o telefone: "))
     idade = int(input("Digite a idade: "))
     endereço = input("Digite o endereço: ")
+
 
     cadastro = Agenda(nome, email, telefone, idade, endereço)
     cadastros.append(cadastro)
@@ -150,3 +171,6 @@ def Menu():
 Repetir = True
 while Repetir:
     Menu()
+
+# Considerações finais: eu não entendi o que o senhor quis dizer com "Liste os dados do(s) objeto(s) de forma
+# padronizada incluindo um sequencial  e o total de objetos retornados."
